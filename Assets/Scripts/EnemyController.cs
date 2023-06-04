@@ -13,6 +13,10 @@ public class EnemyController : MonoBehaviour
     Vector3 EndPosition;
     bool MovingTowardsEnd = true;
 
+    float FreezeTimeElapsed = 0;
+    static float FreezeTimeTotal = 0;
+    static bool isFrozen = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +27,29 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MovingTowardsEnd) { TimeElapsed += Time.deltaTime; }
-        else { TimeElapsed -= Time.deltaTime; }
+        if (isFrozen)
+        {
+            if (FreezeTimeElapsed < FreezeTimeTotal)
+            {
+                FreezeTimeElapsed += Time.deltaTime;
+            }
+            else
+            {
+                FreezeTimeElapsed = 0;
+                isFrozen = false;
+            }
+        }
 
-        if (TimeElapsed > TimeTakenToTravelDistance) { TimeElapsed = TimeTakenToTravelDistance; MovingTowardsEnd = false; }
-        else if (TimeElapsed < 0) { TimeElapsed = 0; MovingTowardsEnd = true; }
+        if (!isFrozen)
+        {
+            if (MovingTowardsEnd) { TimeElapsed += Time.deltaTime; }
+            else { TimeElapsed -= Time.deltaTime; }
 
-        gameObject.transform.position = Vector3.Lerp(StartPosition, EndPosition, TimeElapsed / TimeTakenToTravelDistance);
+            if (TimeElapsed > TimeTakenToTravelDistance) { TimeElapsed = TimeTakenToTravelDistance; MovingTowardsEnd = false; }
+            else if (TimeElapsed < 0) { TimeElapsed = 0; MovingTowardsEnd = true; }
+
+            gameObject.transform.position = Vector3.Lerp(StartPosition, EndPosition, TimeElapsed / TimeTakenToTravelDistance);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -38,5 +58,11 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
         }    
+    }
+
+    public static void Freeze(float _freezeTimeTotal)
+    {
+        isFrozen = true;
+        FreezeTimeTotal = _freezeTimeTotal;
     }
 }

@@ -108,7 +108,7 @@ public class PaintPowerUp : MonoBehaviour
 
     private void OnFreezeEntered()
     {
-
+        EnemyController.Freeze(6.0f);
     }
 
     private void OnCloneEntered()

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8863308623881010962}
   - component: {fileID: 2597138848230038538}
   - component: {fileID: 7417768440611308584}
-  - component: {fileID: 5679648682393721071}
   - component: {fileID: -2415624381245691555}
   m_Layer: 0
   m_Name: Enemy Character Prefab
@@ -116,20 +115,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5679648682393721071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8096102091988158983}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ccdf78c51af25244a2383f7fecd2f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 2.5
-  RotationSpeed: 240
 --- !u!114 &-2415624381245691555
 MonoBehaviour:
   m_ObjectHideFlags: 0
