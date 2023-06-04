@@ -18,6 +18,9 @@ public class PaintLevel : MonoBehaviour
     bool LevelPaused = false;
     bool LevelComplete = false;
 
+    [SerializeField]
+    Vector3 CameraPosition;
+
     private void Awake()
     {
         if (instance == null) { instance = this; }
@@ -35,6 +38,7 @@ public class PaintLevel : MonoBehaviour
         LevelUI = LvCanvasobj.GetComponent<UICanvas_Level>();
 
         AudioManager.Instance().PlayMusic(AudioManager.Instance().LevelMusic);
+        Camera.main.transform.position = CameraPosition;
     }
 
     // Update is called once per frame

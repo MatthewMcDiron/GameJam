@@ -13,7 +13,10 @@ public class PlayerController : MonoBehaviour
     private CharacterMovement mMovement;
     private Animator mAnimator;
     [SerializeField] BoxCollider BrushCollider;
+    [SerializeField] GameObject BombItemPrefab;
     private Vector3 InitalBrushColliderSize;
+
+    private Vector2 LastDirection = Vector2.zero;
 
     PaintPowerUp.PowerupAbilities CurrentPowerup = PaintPowerUp.PowerupAbilities.None;
     float TimeElapsedSincePowerUp;
@@ -58,26 +61,21 @@ public class PlayerController : MonoBehaviour
                 float v = Input.GetAxis("Vertical");
 
                 mMovement.SetMovement(h, v);
+                if (h != 0 || v != 0)
+                {
+                    LastDirection = new Vector2(h, v);
+                }
             }
             else
             {
                 mMovement.SetMovement(0, 0);
             }
         }
+    }
 
-        // Interact with the item
-
-
-        // Execute action with item
-        // if (mCurrentItem != null && Input.GetMouseButtonDown(0))
-        {
-            // Dont execute click if mouse pointer is over uGUI element
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                // TODO: Logic which action to execute has to come from the particular item
-                //_animator.SetTrigger("attack_1");
-            }
-        }
+    public PaintPowerUp.PowerupAbilities GetCurrentPowerup()
+    {
+        return CurrentPowerup;
     }
 
     private void UpdatePowerUp()
@@ -86,15 +84,26 @@ public class PlayerController : MonoBehaviour
         {
             TimeElapsedSincePowerUp += Time.deltaTime;
         }
-        else if (CurrentPowerup != PaintPowerUp.PowerupAbilities.Bomb) { CurrentPowerup = PaintPowerUp.PowerupAbilities.None; }
+        else { CurrentPowerup = PaintPowerUp.PowerupAbilities.None; }
 
         //Speed shoes
         if (CurrentPowerup == PaintPowerUp.PowerupAbilities.SpeedShoes) { mMovement.SetSpeedMultiplier(1.5f); }
         else { mMovement.SetSpeedMultiplier(1.0f); }
 
+        /*
         //Bombs
         if (CurrentPowerup == PaintPowerUp.PowerupAbilities.Bomb && Input.GetKeyDown(KeyCode.F)) 
-        { CurrentPowerup = PaintPowerUp.PowerupAbilities.None; } //Use bomb 
+        {
+
+            Debug.Log(LastDirection);
+            CurrentPowerup = PaintPowerUp.PowerupAbilities.None;
+            GameObject bomb = Instantiate(BombItemPrefab);
+            bomb.transform.position = gameObject.transform.position + new Vector3(LastDirection.x, 0, LastDirection.y).normalized*2;
+
+            BombItem bombScript = bomb.GetComponent<BombItem>();
+            bombScript.SetRollingDirection(new Vector3(LastDirection.x, 0, LastDirection.y).normalized);
+        } 
+        */
 
         //Big brush
         if (BrushCollider != null)
@@ -103,6 +112,6 @@ public class PlayerController : MonoBehaviour
             else { BrushCollider.size = InitalBrushColliderSize; }
         }
 
-
+        //
     }
 }

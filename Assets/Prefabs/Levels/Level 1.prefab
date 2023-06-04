@@ -579,6 +579,7 @@ MonoBehaviour:
   LevelPaintCanvas: {fileID: 2577547158986305135}
   MainMenuPrefab: {fileID: 2567944636111295401, guid: 5c890555a0fe24d478e76226f1defcab, type: 3}
   PercentageRateNeededForCompletion: 97
+  CameraPosition: {x: 0, y: 10, z: 0}
 --- !u!1 &7878701624993766542
 GameObject:
   m_ObjectHideFlags: 0

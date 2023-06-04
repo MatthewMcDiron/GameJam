@@ -12,10 +12,8 @@ public class PaintPowerUp : MonoBehaviour
     { 
         None,
         SpeedShoes,
-        Bomb,
         BigBrush,
         Freeze,
-        Clone,
         MAX_RANGE
     }
 
@@ -73,11 +71,9 @@ public class PaintPowerUp : MonoBehaviour
         {
             AudioManager.Instance().PlaySFX(AudioManager.Instance().PowerUpSFX, "Powerup");
 
-            if (Ability == PowerupAbilities.SpeedShoes) { Debug.Log("ACTIVATE 1"); OnSpeedShoesEntered(); }
-            if (Ability == PowerupAbilities.BigBrush) { Debug.Log("ACTIVATE 2"); OnBigBrushEntered(); }
-            if (Ability == PowerupAbilities.Bomb) { Debug.Log("ACTIVATE 3"); OnBombEntered(); }
-            if (Ability == PowerupAbilities.Freeze) { Debug.Log("ACTIVATE 4"); OnFreezeEntered(); }
-            if (Ability == PowerupAbilities.Clone) { Debug.Log("ACTIVATE 5"); OnCloneEntered(); }
+            if (Ability == PowerupAbilities.SpeedShoes) { OnSpeedShoesEntered(); }
+            if (Ability == PowerupAbilities.BigBrush) { OnBigBrushEntered(); }
+            if (Ability == PowerupAbilities.Freeze) { OnFreezeEntered(); }
             Destroy(gameObject);
         }
     }
@@ -94,7 +90,7 @@ public class PaintPowerUp : MonoBehaviour
     {
         if (PlayerController.Instance() != null)
         {
-            PlayerController.Instance().GivePlayerPowerUp(PowerupAbilities.Bomb, 0f);
+            //PlayerController.Instance().GivePlayerPowerUp(PowerupAbilities.Bomb, 0f);
         }
     }
 
@@ -108,6 +104,7 @@ public class PaintPowerUp : MonoBehaviour
 
     private void OnFreezeEntered()
     {
+        PlayerController.Instance().GivePlayerPowerUp(PowerupAbilities.Freeze, 6f);
         EnemyController.Freeze(6.0f);
     }
 
@@ -115,7 +112,7 @@ public class PaintPowerUp : MonoBehaviour
     {
         if (PlayerController.Instance() != null)
         {
-            PlayerController.Instance().GivePlayerPowerUp(PowerupAbilities.Clone, 6f);
+            //PlayerController.Instance().GivePlayerPowerUp(PowerupAbilities.Clone, 6f);
         }
     }
 }

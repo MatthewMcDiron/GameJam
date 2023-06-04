@@ -142,3 +142,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13f521405e6a87408c862151297ff9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BrushCollider: {fileID: 0}
+  BombItemPrefab: {fileID: 8096102091988158983, guid: c5013d0d83b5a334492b3a17db359f5e, type: 3}

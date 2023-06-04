@@ -15,6 +15,8 @@ public class UICanvas_Level : MonoBehaviour
     [SerializeField] TextMeshProUGUI LevelCompleteNewRecordText;
     [SerializeField] TextMeshProUGUI LevelCompleteNewRecordTimeText;
 
+    [SerializeField] TextMeshProUGUI CurrentItemText;
+
 
     [SerializeField] Image ResumeButtonImage;
     [SerializeField] Image QuitButtonImage;
@@ -30,6 +32,26 @@ public class UICanvas_Level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerController.Instance() != null)
+        {
+            if (PlayerController.Instance().GetCurrentPowerup() == PaintPowerUp.PowerupAbilities.None)
+            { CurrentItemText.text = "None"; }
+
+            if (PlayerController.Instance().GetCurrentPowerup() == PaintPowerUp.PowerupAbilities.SpeedShoes)
+            { CurrentItemText.text = "Speed Shoes"; }
+
+            if (PlayerController.Instance().GetCurrentPowerup() == PaintPowerUp.PowerupAbilities.Bomb)
+            { CurrentItemText.text = "Bomb (Press F to use)"; }
+
+            if (PlayerController.Instance().GetCurrentPowerup() == PaintPowerUp.PowerupAbilities.BigBrush)
+            { CurrentItemText.text = "Big Brush"; }
+
+            if (PlayerController.Instance().GetCurrentPowerup() == PaintPowerUp.PowerupAbilities.Freeze)
+            { CurrentItemText.text = "Frozen Enemies"; }
+
+            if (PlayerController.Instance().GetCurrentPowerup() == PaintPowerUp.PowerupAbilities.Clone)
+            { CurrentItemText.text = "Clone"; }
+        }
     }
 
     public void SetCurrentTimeText(int _hours, int _minutes, int _seconds)
