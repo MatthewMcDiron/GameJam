@@ -15,7 +15,7 @@ public class PaintCanvas : MonoBehaviour
 
     List<GameObject> PaintableSpots = new List<GameObject>();
 
-    List<int> PaintedSpots = new List<int>();
+    int PaintedSpots = 0;
     int AmountOfPaintableSpots = 0;
     PaintLevel Level;
 
@@ -72,16 +72,13 @@ public class PaintCanvas : MonoBehaviour
         AmountOfPaintableSpots = PaintSpotIndex;
     }
 
-    public void UpdateCanvasInfo(PaintableSpot _spot)
+    public void UpdateCanvasInfo(int AmountToAdd)
     {
-        if (!PaintedSpots.Contains(_spot.GetCanvasIndex()))
-        {
-            PaintedSpots.Add(_spot.GetCanvasIndex());
-        }
+        PaintedSpots += AmountToAdd;
     }
 
     public float GetPercentageOfCanvasColoured()
     {
-        return ((float) PaintedSpots.Count / (float) AmountOfPaintableSpots) * 100.0f;
+        return ((float) PaintedSpots / (float) AmountOfPaintableSpots) * 100.0f;
     }
 }

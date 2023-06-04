@@ -53,6 +53,7 @@ public class UICanvas_Level : MonoBehaviour
     public void SetPercentageOfAreaComplete(float _percentage)
     {
         _percentage = (Mathf.RoundToInt(_percentage * 100) / 100.0f);
+        if (_percentage > 100.0f) { _percentage = 100.0f; }
         PecentageOfAreaComplete.text = _percentage + "%";
     }
 

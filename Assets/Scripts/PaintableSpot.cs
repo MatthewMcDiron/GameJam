@@ -53,8 +53,19 @@ public class PaintableSpot : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            if (spriteRenderer.color != Color.blue)
+            {
+                paintCanvas.UpdateCanvasInfo(1);
+            }
+            spriteRenderer.color = Color.blue;
+        }
+        if (other.gameObject.tag == "Enemy")
+        {
+            if (spriteRenderer.color == Color.blue)
+            {
+                paintCanvas.UpdateCanvasInfo(-1);
+            }
             spriteRenderer.color = Color.red;
-            paintCanvas.UpdateCanvasInfo(this);
         }
     }
 }
