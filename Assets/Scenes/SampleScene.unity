@@ -247,16 +247,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1c3c6b7e33a1e4bb73d2a7b8c8a633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMenuMusic: {fileID: 0}
-  LevelMusic: {fileID: 0}
+  MainMenuMusic: {fileID: 8300000, guid: 9643757358f73aa48aaf55b261a577a0, type: 3}
+  LevelMusic: {fileID: 8300000, guid: d61878a25ee9bc24582b61059e194572, type: 3}
   VictoryJingle: {fileID: 0}
-  PowerUpSFX: {fileID: 0}
-  PaintBombSFX: {fileID: 0}
-  EnemyFrozenSFX: {fileID: 0}
-  CloneAppearingSFX: {fileID: 0}
-  CloneDisappearingSFX: {fileID: 0}
-  MenuItemEnterSFX: {fileID: 0}
-  MenuItemClickedSFX: {fileID: 0}
+  PowerUpSFX: {fileID: 8300000, guid: 41f45643e49ffd045aaabd5560f79498, type: 3}
+  PaintBombSFX: {fileID: 8300000, guid: 339823b06d2cd4249976e5cf9d30c3d6, type: 3}
+  EnemyFrozenSFX: {fileID: 8300000, guid: 45aa9d679b3785e4a894c494aa0fb6e3, type: 3}
+  CloneAppearingSFX: {fileID: 8300000, guid: 47108e072d2c1034daf5b3a5c3963ac5, type: 3}
+  CloneDisappearingSFX: {fileID: 8300000, guid: 83a6a30c986e875458dd5c811d3df797, type: 3}
+  MenuItemEnterSFX: {fileID: 8300000, guid: 81c1d3a62945fa8429db68b76c6589a0, type: 3}
+  MenuItemClickedSFX: {fileID: 8300000, guid: fae6dca43d20fe44d80ee78ab0c66181, type: 3}
   PaintSFX: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
