@@ -40,17 +40,11 @@ public class UICanvas_Level : MonoBehaviour
             if (PlayerController.Instance().GetCurrentPowerup() == PaintPowerUp.PowerupAbilities.SpeedShoes)
             { CurrentItemText.text = "Speed Shoes"; }
 
-            if (PlayerController.Instance().GetCurrentPowerup() == PaintPowerUp.PowerupAbilities.Bomb)
-            { CurrentItemText.text = "Bomb (Press F to use)"; }
-
             if (PlayerController.Instance().GetCurrentPowerup() == PaintPowerUp.PowerupAbilities.BigBrush)
             { CurrentItemText.text = "Big Brush"; }
 
             if (PlayerController.Instance().GetCurrentPowerup() == PaintPowerUp.PowerupAbilities.Freeze)
             { CurrentItemText.text = "Frozen Enemies"; }
-
-            if (PlayerController.Instance().GetCurrentPowerup() == PaintPowerUp.PowerupAbilities.Clone)
-            { CurrentItemText.text = "Clone"; }
         }
     }
 
