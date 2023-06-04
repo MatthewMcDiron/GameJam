@@ -10,6 +10,7 @@ public class PaintPowerUp : MonoBehaviour
 
     public enum PowerupAbilities
     { 
+        None,
         SpeedShoes,
         Bomb,
         BigBrush,
@@ -62,46 +63,59 @@ public class PaintPowerUp : MonoBehaviour
 
     public void SetRandomAbility()
     {
-        Ability = (PowerupAbilities)Random.Range(0, (int)PowerupAbilities.MAX_RANGE - 1);
-        //Set model for ability
+        Ability = (PowerupAbilities)Random.Range(1, (int)PowerupAbilities.MAX_RANGE - 1);
+        //Set model for ability in mesh
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            if (Ability == PowerupAbilities.SpeedShoes) { OnSpeedShoesEntered(); }
-            if (Ability == PowerupAbilities.BigBrush) { OnBigBrushEntered(); }
-            if (Ability == PowerupAbilities.Bomb) { OnBombEntered(); }
-            if (Ability == PowerupAbilities.Freeze) { OnFreezeEntered(); }
-            if (Ability == PowerupAbilities.Clone) { OnCloneEntered(); }
-            Debug.Log("ACTIVATE POWERUP");
+            AudioManager.Instance().PlaySFX(AudioManager.Instance().PowerUpSFX, "Powerup");
+
+            if (Ability == PowerupAbilities.SpeedShoes) { Debug.Log("ACTIVATE 1"); OnSpeedShoesEntered(); }
+            if (Ability == PowerupAbilities.BigBrush) { Debug.Log("ACTIVATE 2"); OnBigBrushEntered(); }
+            if (Ability == PowerupAbilities.Bomb) { Debug.Log("ACTIVATE 3"); OnBombEntered(); }
+            if (Ability == PowerupAbilities.Freeze) { Debug.Log("ACTIVATE 4"); OnFreezeEntered(); }
+            if (Ability == PowerupAbilities.Clone) { Debug.Log("ACTIVATE 5"); OnCloneEntered(); }
             Destroy(gameObject);
         }
     }
 
     private void OnSpeedShoesEntered()
     {
-        //Need player character
+        if (PlayerController.Instance() != null)
+        {
+            PlayerController.Instance().GivePlayerPowerUp(PowerupAbilities.SpeedShoes, 8f);
+        }
     }
 
     private void OnBombEntered()
     {
-        //Need player character
+        if (PlayerController.Instance() != null)
+        {
+            PlayerController.Instance().GivePlayerPowerUp(PowerupAbilities.Bomb, 0f);
+        }
     }
 
     private void OnBigBrushEntered()
     {
-        //Increase player collision size
+        if (PlayerController.Instance() != null)
+        {
+            PlayerController.Instance().GivePlayerPowerUp(PowerupAbilities.BigBrush, 6f);
+        }
     }
 
     private void OnFreezeEntered()
     {
-        //Freeze enemies
+
     }
 
     private void OnCloneEntered()
     {
-        //Need player character
+        if (PlayerController.Instance() != null)
+        {
+            PlayerController.Instance().GivePlayerPowerUp(PowerupAbilities.Clone, 6f);
+        }
     }
 }

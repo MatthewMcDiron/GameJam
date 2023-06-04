@@ -5,14 +5,14 @@ using UnityEngine;
 public class PaintLevel : MonoBehaviour
 {
 
-    public static PaintLevel instance;
+    private static PaintLevel instance;
 
     [SerializeField] GameObject PlayerObject;
     [SerializeField] GameObject LevelUIPrefab;
     [SerializeField] PaintCanvas LevelPaintCanvas;
     UICanvas_Level LevelUI;
     [SerializeField] GameObject MainMenuPrefab;
-
+    [SerializeField] float PercentageRateNeededForCompletion = 100;
 
     float TimeElapsedDetlaTimeSeconds = 0;
     bool LevelPaused = false;
@@ -41,11 +41,7 @@ public class PaintLevel : MonoBehaviour
     void Update()
     {
         if (!LevelComplete)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                OnLevelComplete();
-            }    
+        {  
             if (Input.GetKeyDown(KeyCode.P))
             {
                 if (!LevelPaused) { PauseLevel(); }
@@ -58,7 +54,7 @@ public class PaintLevel : MonoBehaviour
             }
         }
 
-        if (LevelPaintCanvas.GetPercentageOfCanvasColoured() >= 99.99f)
+        if (LevelPaintCanvas.GetPercentageOfCanvasColoured() >= PercentageRateNeededForCompletion)
         {
             OnLevelComplete();
         }
@@ -76,7 +72,7 @@ public class PaintLevel : MonoBehaviour
 
     private void UpdatePaintedPercentage()
     {
-        LevelUI.SetPercentageOfAreaComplete(LevelPaintCanvas.GetPercentageOfCanvasColoured());
+        LevelUI.SetPercentageOfAreaComplete(LevelPaintCanvas.GetPercentageOfCanvasColoured()/PercentageRateNeededForCompletion*100.0f);
     }
 
     public void PauseLevel()
@@ -109,4 +105,5 @@ public class PaintLevel : MonoBehaviour
     }
 
     public bool IsLevelPaused() { return LevelPaused; }
+    public bool IsLevelComplete() { return LevelComplete; }
 }

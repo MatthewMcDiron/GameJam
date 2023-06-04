@@ -76,6 +76,7 @@ public class UICanvas_Level : MonoBehaviour
         if (!_data.Completed)
         {
             _data.Completed = true;
+
             _data.TimeHours = _hours;
             _data.TimeMinutes = _minutes;
             _data.TimeSeconds = _seconds;
@@ -98,7 +99,12 @@ public class UICanvas_Level : MonoBehaviour
             }
         }
 
-        if (NewRecord) { LevelCompleteNewRecordTimeText.text = LevelCurrentTimeText.text; }
+        if (NewRecord) 
+        {
+            LevelCompleteNewRecordText.gameObject.SetActive(true);
+            LevelCompleteNewRecordTimeText.gameObject.SetActive(true);
+            LevelCompleteNewRecordTimeText.text = LevelCurrentTimeText.text; 
+        }
         else 
         {
             LevelCompleteNewRecordText.gameObject.SetActive(false);
@@ -109,11 +115,13 @@ public class UICanvas_Level : MonoBehaviour
 
     public void OnResumeButtonOver()
     {
+        AudioManager.Instance().PlaySFX(AudioManager.Instance().MenuItemEnterSFX, "MenuItem");
         ResumeButtonImage.color = new Color(ResumeButtonImage.color.r, ResumeButtonImage.color.g, ResumeButtonImage.color.b, 0.6f);
     }
 
     public void OnQuitButtonOver()
     {
+        AudioManager.Instance().PlaySFX(AudioManager.Instance().MenuItemEnterSFX, "MenuItem");
         QuitButtonImage.color = new Color(QuitButtonImage.color.r, QuitButtonImage.color.g, QuitButtonImage.color.b, 0.6f);
     }
 
@@ -129,11 +137,13 @@ public class UICanvas_Level : MonoBehaviour
 
     public void OnResumeButtonClicked()
     {
-        PaintLevel.instance.ResumeLevel();
+        AudioManager.Instance().PlaySFX(AudioManager.Instance().MenuItemClickedSFX, "MenuItem");
+        PaintLevel.Instance().ResumeLevel();
     }
 
     public void OnLevelFinishedButtonOver()
     {
+        AudioManager.Instance().PlaySFX(AudioManager.Instance().MenuItemEnterSFX, "MenuItem");
         LevelFinishedButtonImage.color = new Color(LevelFinishedButtonImage.color.r, LevelFinishedButtonImage.color.g, LevelFinishedButtonImage.color.b, 0.6f);
     }
 
@@ -144,7 +154,8 @@ public class UICanvas_Level : MonoBehaviour
 
     public void OnQuitButtonClicked()
     {
-        PaintLevel.instance.QuitLevel();
+        AudioManager.Instance().PlaySFX(AudioManager.Instance().MenuItemClickedSFX, "MenuItem");
+        PaintLevel.Instance().QuitLevel();
     }
 
 }

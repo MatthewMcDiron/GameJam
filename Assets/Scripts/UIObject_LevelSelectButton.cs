@@ -35,6 +35,7 @@ public class UIObject_LevelSelectButton : MonoBehaviour
 
     public void OnMouseEnterButton()
     {
+        AudioManager.Instance().PlaySFX(AudioManager.Instance().MenuItemEnterSFX, "MenuItem");
         LevelBackgroundImage.color = new Color(LevelBackgroundImage.color.r, LevelBackgroundImage.color.g, LevelBackgroundImage.color.b, 0.6f);
     }
 
@@ -47,6 +48,7 @@ public class UIObject_LevelSelectButton : MonoBehaviour
     {
         if (LevelPrefab != null)
         {
+            AudioManager.Instance().PlaySFX(AudioManager.Instance().MenuItemClickedSFX, "MenuItem");
             LevelManager.Instance().SetCurrentLevelNumber(LevelNumber);
             Instantiate(LevelPrefab, null);
             Destroy(LevelSelectCanvas);
