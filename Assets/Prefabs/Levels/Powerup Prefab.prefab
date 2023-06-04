@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DespawnTimeLength: 10
-  PowerupMesh: {fileID: 0}
+  PowerupMesh: {fileID: 5592189361356959509}
 --- !u!1 &3323601394044923838
 GameObject:
   m_ObjectHideFlags: 0

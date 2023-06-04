@@ -33,6 +33,8 @@ public class PaintLevel : MonoBehaviour
     {
         GameObject LvCanvasobj = Instantiate(LevelUIPrefab);
         LevelUI = LvCanvasobj.GetComponent<UICanvas_Level>();
+
+        AudioManager.Instance().PlayMusic(AudioManager.Instance().LevelMusic);
     }
 
     // Update is called once per frame

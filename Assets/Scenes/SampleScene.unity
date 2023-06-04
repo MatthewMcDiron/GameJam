@@ -247,8 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1c3c6b7e33a1e4bb73d2a7b8c8a633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMenuMusic: {fileID: 8300000, guid: 9643757358f73aa48aaf55b261a577a0, type: 3}
-  LevelMusic: {fileID: 8300000, guid: d61878a25ee9bc24582b61059e194572, type: 3}
+  MainMenuMusic: {fileID: 8300000, guid: d61878a25ee9bc24582b61059e194572, type: 3}
+  LevelMusic: {fileID: 8300000, guid: 9643757358f73aa48aaf55b261a577a0, type: 3}
   VictoryJingle: {fileID: 0}
   PowerUpSFX: {fileID: 8300000, guid: 41f45643e49ffd045aaabd5560f79498, type: 3}
   PaintBombSFX: {fileID: 8300000, guid: 339823b06d2cd4249976e5cf9d30c3d6, type: 3}

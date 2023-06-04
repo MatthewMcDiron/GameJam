@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip _track, bool _loop = true)
     {
-        if (_track != null)
+        if (_track != null && mMusicSource.clip != _track)
         {
             mMusicSource.clip = _track;
             mMusicSource.loop = _loop;

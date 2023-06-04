@@ -9,6 +9,8 @@ public class UICanvas_LevelSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.Instance().PlayMusic(AudioManager.Instance().MainMenuMusic);
+
         LevelManager.Instance().SetCurrentLevelNumber(-1);
 
         for (int i = 0; i< LevelSelectButtons.Count; i++)
